@@ -8,8 +8,9 @@
 package rtmp
 
 import (
-	"github.com/pkg/errors"
 	"net"
+
+	"github.com/pkg/errors"
 )
 
 func Dial(protocol, addr string, config *ConnConfig) (*ClientConn, error) {
@@ -26,7 +27,7 @@ func DialWithDialer(dialer *net.Dialer, protocol, addr string, config *ConnConfi
 		return nil, err
 	}
 
-	return newClientConnWithSetup(rwc, config)
+	return NewClientConnWithSetup(rwc, config)
 }
 
 func makeValidAddr(addr string) (string, error) {

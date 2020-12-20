@@ -8,9 +8,10 @@
 package rtmp
 
 import (
-	"github.com/pkg/errors"
 	"net"
 	"sync"
+
+	"github.com/pkg/errors"
 
 	"github.com/yutopp/go-rtmp/handshake"
 	"github.com/yutopp/go-rtmp/message"
@@ -23,7 +24,7 @@ type ClientConn struct {
 	m       sync.RWMutex
 }
 
-func newClientConnWithSetup(c net.Conn, config *ConnConfig) (*ClientConn, error) {
+func NewClientConnWithSetup(c net.Conn, config *ConnConfig) (*ClientConn, error) {
 	conn := newConn(c, config)
 
 	if err := handshake.HandshakeWithServer(conn.rwc, conn.rwc, &handshake.Config{
